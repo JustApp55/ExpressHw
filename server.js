@@ -37,7 +37,7 @@ const magic8Ball = ["It is certain", "It is decidedly so", "Without a doubt", "Y
 
 app.get('/magic/:question', (req,res) => {
   const response = magic8Ball[Math.floor(Math.random()*magic8Ball.length)]
-  res.render('template', {message: req.params.question, content: '<h1>' + 'Your question was: ' + response + '</h1>' })
+  res.render('template', {message: req.params.question, content: '<h1>' + 'Will I be a Millionaire?: ' + response + '</h1>' })
 })
 
 
