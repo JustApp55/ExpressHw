@@ -1,5 +1,9 @@
-const express = require('express');
-const app = express();
+require('dotenv').config()
+const express = require('express'); //from documentation: express is function
+const app = express();//app is an object
+const port = process.env.PORT;
+
+console.log(process.env.PORT);
 
 // app.get('/greeting', (req, res) => {
 //     res.send('Hello, stranger');
@@ -27,11 +31,11 @@ app.get('/greeting/:name', (req, res) => {
     res.render('template', {title: 'Greeting', message: 'What\'s up, stranger!', content: 'Welcome ' + req.params.name + ', it\'s so great to see you!'});
  });
  
- app.get('/tip/:total/:tipPercentage', (req, res) => {
-    res.render('template', { title: 'Tip', message: (req.params.total) * (req.params.tipPercentage)/100 })
-  })
 
- // (math.random()*20+1)
+  app.get('/tip/:total/:tipPercentage' , (req, res)=>{
+   res.render('template',{title: 'Tip', message: 'Please, your tip is:', content: '$' + Math.round((req.params.total*(req.params.tipPercentage/100))*100)/100})
+})
+
 
 
 app.listen(3000, () => {
