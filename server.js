@@ -5,9 +5,6 @@ const port = process.env.PORT;
 
 console.log(process.env.PORT);
 
-// app.get('/greeting', (req, res) => {
-//     res.send('Hello, stranger');
-// });
 
 const fs = require('fs') // this engine requires the fs module like we did monday
 const res = require('express/lib/response')
@@ -31,12 +28,9 @@ app.get('/greeting/:name', (req, res) => {
     res.render('template', {title: 'Greeting', message: 'What\'s up, stranger!', content: 'Welcome ' + req.params.name + ', it\'s so great to see you!'});
  });
  
-
   app.get('/tip/:total/:tipPercentage' , (req, res)=>{
-   res.render('template',{title: 'Tip', message: 'Please, your tip is:', content: '$' + Math.round((req.params.total*(req.params.tipPercentage/100))*100)/100})
+   res.render('template',{title: 'Tip', message: 'Please, your tip is:', content: '$' + Math.round((req.params.total*(req.params.tipPercentage * 0.01)))})
 })
-
-
 
 app.listen(3000, () => {
     console.log('listening');
