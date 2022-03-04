@@ -17,6 +17,7 @@ app.engine('hypatia', (filePath, options, callback) => { // define the view engi
       .replace('#title#', '<title>' + options.title + '</title>')
       .replace('#message#', '<h1>' + options.message + '</h1>')
       .replace('#content#','<div>'+ options.content + '</div>' )
+      .replace('#image#', '<img src=' + options.image + '>' )
     return callback(null, rendered)
   });
 });
@@ -31,6 +32,14 @@ app.get('/greeting/:name', (req, res) => {
   app.get('/tip/:total/:tipPercentage' , (req, res)=>{
    res.render('template',{title: 'Tip', message: 'Please, your tip is:', content: '$' + Math.round((req.params.total*(req.params.tipPercentage * 0.01)))})
 })
+
+const magic8Ball = ["It is certain", "It is decidedly so", "Without a doubt", "Yes definitely","You may rely on it", "As I see it yes", "Most likely", "Outlook good","Yes", "Signs point to yes", "Reply hazy try again", "Ask again later","Better not tell you now", "Cannot predict now", "Concentrate and ask again","Don't count on it", "My reply is no", "My sources say no","Outlook not so good", "Very doubtful"]
+
+app.get('/magic/:question', (req,res) => {
+  const response = magic8Ball[Math.floor(Math.random()*magic8Ball.length)]
+  res.render('template', {message: req.params.question, content: '<h1>' + 'Your question was: ' + response + '</h1>' })
+})
+
 
 app.listen(3000, () => {
     console.log('listening');
