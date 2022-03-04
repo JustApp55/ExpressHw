@@ -16,15 +16,16 @@ const port = process.env.PORT
 */
 
 app.get('/', (req, res) => {
-    res.send('template', {message: '99 bottles of beer on the wall' + '<br>' , content:" '<a href=/98>'take one down, pass it around'</a>'"})
+    res.send('template', {message: '99 bottles of beer on the wall', content:" '<a href=/98>'take one down, pass it around'</a>'"})
 })
 
 app.get('/0', (req, res) => {
-    res.send('template', {title:'bottles', message: '0 bottles of beer on the wall' + '<br>' , content: '<a href=/>Restart</a>'})
+    res.send('template', {message: '0 bottles of beer on the wall', content: '<a href=/>Restart</a>'})
 })
 
 app.get('/:number_of_bottles', (req, res) => {
-    let numBottles = req.params.number_of_bottles
+    let numBottles = req.params.number_of_bottles - 1
+    res.send('template' , {message: req.params.number_of_bottles, content: `<a href=/ ${numBottles}>take one down, pass it around</a>`})
 })
 
 
