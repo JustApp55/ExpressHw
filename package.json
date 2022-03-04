@@ -1,0 +1,24 @@
+{
+  "name": "expresshw",
+  "version": "1.0.0",
+  "description": "First Express Homework",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustApp55/ExpressHw.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JustApp55/ExpressHw/issues"
+  },
+  "homepage": "https://github.com/JustApp55/ExpressHw#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3"
+  }
+}
